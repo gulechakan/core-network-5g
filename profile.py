@@ -1,17 +1,18 @@
 #!/usr/bin/python
 
 tourDescription = """
-### Teaching 5G with POWDER and OpenAirInterface5G
+### Bring up an end-to-end 5G network with OpenAirInterface5G
 
-This profile is derived from a tutorial session created by Dustin Maas for MERIF 2023.
-It deploys a single compute node with an image that includes docker,
-docker-compose, tshark, oai-cn5g-fed v1.4.0, and docker images for all of the
-OAI 5G core network functions. It also includes source code and a prebuilt
-version of the OAI RAN stack (gNB, nrUE, RF simulator). It shows how
-profiles like this one can be used in the classroom to explore 5G networks.
+This profile was created by Dustin Maas.
 
-The description and instructions for the original MERIF session can be found
-[here](https://gitlab.flux.utah.edu/powderrenewpublic/merif2023/-/blob/main/content/teaching-5g-oai.md).
+It deploys a single compute node with a disk image that includes docker,
+docker-compose, tshark, and docker images for all of the OAI 5G core network 
+functions. It also includes source code and a prebuilt version of the OAI RAN 
+(gNB, nrUE, RF simulator).
+
+To use this profile, you should have reserved a `d430` server at Emulab in 
+advance.
+
 """
 
 tourInstructions = """
