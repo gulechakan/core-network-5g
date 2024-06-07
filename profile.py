@@ -32,10 +32,20 @@ import geni.rspec.igext as IG
 import geni.rspec.emulab.pnext as PN
 import geni.rspec.emulab as emulab
 
-request = portal.context.makeRequestRSpec()
+pc = portal.Context()
+request = pc.makeRequestRSpec()
+
+# Optional physical type for all nodes.
+pc.defineParameter("phystype",  "Optional hardware type",
+                   portal.ParameterType.STRING, "d430",
+                   longDescription="Specify hardware type (d430 or d820)")
+
+# Retrieve the values the user specifies during instantiation.
+params = pc.bindParameters()
+pc.verifyParameters()
 
 node = request.RawPC( "node" )
-node.hardware_type = "d430"
+node.hardware_type = params.phystype
 node.disk_image = "urn:publicid:IDN+emulab.net+image+mww2023:oai-cn5g-rfsim"
 node.startVNC()
 
