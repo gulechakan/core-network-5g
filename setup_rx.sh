@@ -1,14 +1,3 @@
-username=$(whoami)  
-groupname=$(id -gn)
-
-
-cd /
-
-sudo chown $username:$groupname mydata  
-chmod 775 mydata  
-# verify the result
-ls -ld mydata  
-
 
 sudo sysctl -w net.ipv4.ip_forward=1
 
