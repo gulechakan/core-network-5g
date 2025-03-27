@@ -44,10 +44,22 @@ pc.defineParameter("phystype",  "Optional hardware type",
 params = pc.bindParameters()
 pc.verifyParameters()
 
-node = request.RawPC( "node" )
-node.hardware_type = params.phystype
-node.disk_image = "urn:publicid:IDN+emulab.net+image+mww2023:oai-cn5g-rfsim"
-node.startVNC()
+core = request.RawPC( "core" )
+core.hardware_type = params.phystype
+core.disk_image = "urn:publicid:IDN+emulab.net+image+mww2023:oai-cn5g-rfsim"
+core.startVNC()
+
+iface_core = core.addInterface('interface-core', rspec.IPv4Address('10.10.1.1', '255.255.255.0'))
+
+ran = request.RawPC( "ran" )
+ran.hardware_type = params.phystype
+ran.disk_image = "urn:publicid:IDN+emulab.net+image+mww2023:oai-cn5g-rfsim"
+ran.startVNC()
+iface_ran = ran.addInterface('interface-ran', rspec.IPv4Address('10.10.1.2', '255.255.255.0'))
+
+link = request.Link('link')
+link.addInterface(iface_core)
+link.addInterface(iface_ran)
 
 tour = IG.Tour()
 tour.Description(IG.Tour.MARKDOWN, tourDescription)
