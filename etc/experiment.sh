@@ -26,6 +26,10 @@ case "$1" in
         flow="cubic-ecn-none"
         cc="cubic"
         ;;
+    cubic-ecn-none-slicing)
+        flow="cubis-ecn-none-slicing"
+        cc="cubic"
+        ;;
     cubic-ecn-20)
         flow="cubic-ecn20"
         cc="cubic"
